@@ -140,9 +140,25 @@ int numE(Map g, TransportID type)
 int connections(Map g, LocationID start, LocationID end, TransportID type[])
 {
    assert(g != NULL);
+   assert(start >= 0 && start <=70);
+   assert(end >= 0 && end <=70);
+   int n=0; 
+  
+
+   VList  curr;
+ 
+   for (curr = g->connections[start]; curr!=NULL; curr=curr->next) {
+	if (curr->v == end) {
+		type[n++] = curr->type;
+	}
+   }
+
+   return n;
+
+   // g->connections(start)
    // TODO: complete this fucntion
    //i killed it hahahah
-   return 0;  // to keep the compiler happy
+   //return 0;  // to keep the compiler happy
 }
 
 // Add edges to Graph representing map of Europe
