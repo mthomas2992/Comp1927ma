@@ -148,6 +148,8 @@ int connections(Map g, LocationID start, LocationID end, TransportID type[])
    VList  curr;
    VList  boatcurr;
 
+   if (start == end) return 0;
+
    for (curr = g->connections[start]; curr!=NULL; curr=curr->next) {
 	    if (curr->v == end) {
 		      type[n++] = curr->type;

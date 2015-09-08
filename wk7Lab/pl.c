@@ -21,8 +21,10 @@ int main(int argc, char **argv)
 		if (id != NOWHERE)
 			printf("%s is %s (%d)\n", argv[1], idToName(id), id);
 	}
-	if (id == NOWHERE)
+	if (id == NOWHERE) 
 		printf("Invalid place '%s'\n", argv[1]);
+
+ 
 
 	return 0;
 }
