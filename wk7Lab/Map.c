@@ -153,10 +153,11 @@ int connections(Map g, LocationID start, LocationID end, TransportID type[])
 		      type[n++] = curr->type;
 	    }
       if (curr->type==BOAT){
-        for (boatcurr = g->connections[curr->v]; curr!=NULL; curr=curr->next) {
+        for (boatcurr = g->connections[curr->v]; boatcurr!=NULL; boatcurr=boatcurr->next) {
            if (boatcurr->v == end) {
                type[n++] = curr->type;
            }
+	}
       }
   }
 
