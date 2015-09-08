@@ -144,7 +144,6 @@ int connections(Map g, LocationID start, LocationID end, TransportID type[])
    assert(end >= 0 && end <=70);
    int n=0;
 
-
    VList  curr;
    VList  boatcurr;
 
@@ -159,10 +158,9 @@ int connections(Map g, LocationID start, LocationID end, TransportID type[])
            if (boatcurr->v == end) {
                type[n++] = curr->type;
            }
-	}
+	      }
       }
   }
-
    return n;
 }
 
