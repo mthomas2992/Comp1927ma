@@ -141,6 +141,7 @@ int connections(Map g, LocationID start, LocationID end, TransportID type[])
 {
    assert(g != NULL);
    // TODO: complete this fucntion
+//Hello Matt how's it going?
    return 0;  // to keep the compiler happy
 }
 
