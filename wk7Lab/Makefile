@@ -17,5 +17,8 @@ Places.o : Places.c Places.h
 Map.o : Map.c Map.h Places.h
 Queue.o : Queue.c Queue.h Item.h
 
+conn2 : conn2.o Map.o Places.o
+conn2.o : conn2.c Map.c Places.h
+
 clean :
 	rm -f $(BINS) *.o core *.dSYM

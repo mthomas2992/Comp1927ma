@@ -14,18 +14,16 @@ int main(int argc, char **argv)
 		fprintf(stderr, "Usage: %s Place1 Place2\n", argv[0]);
 		exit(1);
 	}
-	//convert args to place IDs
-       	id1 = (strlen(argv[1]) == 2) ? abbrevToID(argv[1]) : nameToID(argv[1]);
-	id2 = (strlen(argv[1]) == 2) ? abbrevToID(argv[2]) : nameToID(argv[2]);
-
+	id1 = atoi(argv[1]);
+	id2 = atoi(argv[2]);
 	// check place validity
-	if (id1 == NOWHERE) {
+	if (id1 < 0 || id1 > 70) {
 		errs++;
-		fprintf(stderr, "Invalid place name: %s\n", argv[1]);
+		fprintf(stderr, "Invalid place num: %d\n", atoi(argv[1]));
 	}
-	if (id2 == NOWHERE) {
+	if (id2 < 0 || id1 > 70) {
 		errs++;
-		fprintf(stderr, "Invalid place name: %s\n", argv[2]);
+		fprintf(stderr, "Invalid place num: %d\n", atoi(argv[2]));
 	}
 	if (errs > 0) exit(1);
 
@@ -35,16 +33,15 @@ int main(int argc, char **argv)
 	// check for direct connection
     TransportID t[MAX_TRANSPORT];  int i, n;
 
-	printf("Between %s and %s ...\n", idToName(id1), idToName(id2));
+//	printf("Between %s and %s ...\n", idToName(id1), idToName(id2));
 	n = connections(europe, id1, id2, t);
-	if (n == 0)
-		printf("No direct connection\n");
-	else {
+	if (n > 0) {
 		for (i = 0; i < n; i++) {
+			printf("%s connects to %s by ", idToName(id1), idToName(id2));
 			switch (t[i]) {
-			case ROAD: printf("Road connection\n"); break;
-			case RAIL: printf("Rail connection\n"); break;
-			case BOAT: printf("Boat connection\n"); break;
+			case ROAD: printf("Road\n"); break;
+			case RAIL: printf("Rail\n"); break;
+			case BOAT: printf("Boat\n"); break;
 			default:   printf("Weird connection\n"); break;
 			}
 		}
