@@ -75,7 +75,7 @@ int main(int argc, char **argv)
 	enterQueue(ToDo,argv[1]);//add given url to que or stack
 	g=newGraph(maxURLs); //initialise graph
 	int q=0; //size of scanned que
-	int x=0; //testing
+	//int x=0; //testing
 	int test=0;
 	seenset=newSet(); //set of seen urls, set doesn't have duplicates
 	char currentURL[BUFSIZE];
@@ -115,13 +115,15 @@ int main(int argc, char **argv)
 			q--;
 		}
 		if (test==0) break;
+		/* testing lines
 		x++;
 		printf("run %d\n",x);
 		if (x>10) break;
-		showQueue(ToDo);
+		showQueue(ToDo);*/
 		disposeQueue(currentURLconnect); //empty out found urls
 		sleep(1);
 	}
+	showGraph(g,0);
 	showGraph(g,1);
 	/*
 	//this code prints off all the urls it finds on a page
