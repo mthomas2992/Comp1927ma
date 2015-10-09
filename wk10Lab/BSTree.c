@@ -81,10 +81,37 @@ void BSTreePostfix(BSTree t)
 	showBSTreeNode(t);
 }
 
+/*Level Order Traversal (BSTree T):
+	initialise queue
+	add T's root node to queue
+	WHILE the queue still has some entries DO
+		take the head of the queue
+		print the value from its BSTree node
+		add the left child (if any) to the queue
+		add the right child (if any) to the queue
+	END
+END*/
+
 // print values in level-order
 void BSTreeLevelOrder(BSTree t)
 {
-	return; // TODO
+	//printf("\nBSTTreeLevelOrder called\n");
+	if (t!=NULL){
+		Queue q=newQueue();
+		QueueJoin(q,t);
+		while(QueueIsEmpty(q)==0){
+			Item current=QueueLeave(q);
+			printf("%d ",current->value);
+			if(current->left!=NULL){
+				QueueJoin(q,current->left);
+			}
+			if (current->right!=NULL){
+				QueueJoin(q,current->right);
+			}
+		}
+	}
+
+	return;
 }
 
 // count #nodes in BSTree
@@ -97,10 +124,29 @@ int BSTreeNumNodes(BSTree t)
 	             + BSTreeNumNodes(t->right);
 }
 
+int countLeafNodes(BSTree n)
+{
+	if(n->left==NULL&&n->right==NULL){
+		return 1;
+	} else if (n->left==NULL){
+		return countLeafNodes(n->right);
+	} else if (n->right==NULL){
+		return countLeafNodes(n->left);
+	} else {
+		return countLeafNodes(n->left)+countLeafNodes(n->right);
+	}
+}
+
 // count #leaves in BSTree
 int BSTreeNumLeaves(BSTree t)
 {
-	return 0; // TODO
+	//printf("\nBSTTreeNumLeaves called\n");
+	if (t!=NULL){
+		return countLeafNodes(t); // TODO
+	} else {
+		return 0;
+	}
+
 }
 
 // insert a new value into a BSTree
@@ -220,9 +266,9 @@ int rprofile[MAX_HEIGHT];
 
 int gap = 3;  // gap between left and right nodes
 
-//used for printing next node in the same level, 
+//used for printing next node in the same level,
 //this is the x coordinate of the next char printed
-int print_next;    
+int print_next;
 
 //prints ascii tree for given Tree structure
 void doShowBSTree(BSTree t)
