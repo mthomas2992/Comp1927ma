@@ -109,6 +109,7 @@ void BSTreeLevelOrder(BSTree t)
 				QueueJoin(q,current->right);
 			}
 		}
+		dropQueue(q);
 	}
 
 	return;
