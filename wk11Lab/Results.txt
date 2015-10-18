@@ -7,17 +7,44 @@ Depth = depth of tree, Cost = average #comparisons per search
 Insert
 Method       Depth      Cost     Depth      Cost     Depth      Cost
 
-L         ________  ________  ________  ________  ________  ________
+L          5000        4152      13         16       28        21
 
-A         ________  ________  ________  ________  ________  ________
+A          5000        2515      2954       1487     28        22
 
-R         ________  ________  ________  ________  ________  ________
+R          2492        1269      1774       899      27        20
 
-B         ________  ________  ________  ________  ________  ________
+B          204         83        20         18       23        17
 
-S         ________  ________  ________  ________  ________  ________
+S          33          31        29         31       1146      30
 
-V         ________  ________  ________  ________  ________  ________
+V          13          16        14         16       15        16
 
 
 Notes (what the above indicates):
+It is clear that in all insertion and ordering methods (excluding splay, which
+differs from other methods as the tree itself is modified in searching, causing
+a near constant cost regardless of value or depth) the lower the depth of the
+tree the lower the cost. Its because of this that creating a balanced tree Via
+prefix order insertion offers much lower costs, as the total depth of the tree
+is significantly affected when compared to a simple ascending order which can
+lead to chain-like trees and hence massive depths. Ultimatley the graph shows
+the most effective tree insertion method is by the AVL approach, which
+is most efficient in all orders of insertion suiting it to most situations, from
+the tree been used simply to read values to it been used as a more dynamic ADT.
+
+
+For the challenge bit here is the bash code
+-----START----
+#!/bin/sh
+
+size=5000
+
+for insert in L A B R S V
+do
+	for seed in 10 15 22 36 78 25 9 1 8 2
+	do
+		echo ""
+		echo "Test: ./tlab $size R $insert $seed"
+		echo "t" | ./tlab $size R $insert $seed | grep -v Tree
+	done
+done
