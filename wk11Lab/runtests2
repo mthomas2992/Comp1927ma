@@ -1,0 +1,13 @@
+#!/bin/sh
+
+size=5000
+
+for insert in L A B R S V
+do
+	for seed in 10 15 22 36 78 25 9 1 8 2
+	do
+		echo ""
+		echo "Test: ./tlab $size R $insert $seed"
+		echo "t" | ./tlab $size R $insert $seed | grep -v Tree
+	done
+done

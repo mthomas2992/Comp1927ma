@@ -436,7 +436,7 @@ Link rotateL(Link n2) //TODO Add counter
 {
 	if (n2 == NULL) return NULL;
 	Link n1 = n2->right;
-	n1->within->nrotates++;
+	n2->within->nrotates++;
 	if (n1 == NULL) return n2;
 	n2->right = n1->left;
 	n1->left = n2;
