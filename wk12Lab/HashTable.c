@@ -60,7 +60,6 @@ void HashTableStats(HashTable ht)
 {
 	int i,j;
 	int max=0;
-	int chains=0;
 
 	assert(ht != NULL);
 	printf("Hash Table Stats:\n");
@@ -75,6 +74,9 @@ void HashTableStats(HashTable ht)
 	for (j=0; j<ht->nslots; j++) {
 	    faster[ListLength(ht->lists[j])]++;
 	}
+	for (i=0; i<= max; i++) {
+	    printf("%8d %8d\n", i, faster[i]);
+	}
 	/*for (i=0; i<=max; i++) {
 	    chains =0;
 	    for ( j=0; j<ht->nslots; j++) {
@@ -82,7 +84,6 @@ void HashTableStats(HashTable ht)
 	    }
 	    printf("%8d %8d\n", i, chains);
 	}*/
-	printf("%8d %8d\n", i, chains);
 	free(faster);
 	// TODO .. rest of function to show length/freq pairs
 }
