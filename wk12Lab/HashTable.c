@@ -58,12 +58,26 @@ void dropHashTable(HashTable ht)
 // display HashTable stats
 void HashTableStats(HashTable ht)
 {
+	int i,j;
+	int max=0;
+	int chains=0;
+
 	assert(ht != NULL);
 	printf("Hash Table Stats:\n");
-	printf("Number of slots = %d\n",0); // TODO
-	printf("Number of items = %d\n",0); // TODO
+	printf("Number of slots = %d\n",ht->nslots);
+	printf("Number of items = %d\n",ht->nitems);
 	printf("Chain length distribution\n");
 	printf("%8s %8s\n","Length","#Chains");
+	for ( i=0; i<ht->nslots; i++) {
+	    if (ListLength(ht->lists[i]) >= max) max = ListLength(ht->lists[i]);	
+	}
+	for (i=0; i<=max; i++) {
+	    chains =0;
+	    for ( j=0; j<ht->nslots; j++) {
+	    	if (ListLength(ht->lists[j]) == i) chains++;
+	    }
+	    printf("%8d %8d\n", i, chains);
+	}
 	// TODO .. rest of function to show length/freq pairs
 }
 

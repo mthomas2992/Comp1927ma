@@ -1,0 +1,4 @@
+a.
+
+Hash Table Size		Max Chain Length
+
