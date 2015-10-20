@@ -71,13 +71,19 @@ void HashTableStats(HashTable ht)
 	for ( i=0; i<ht->nslots; i++) {
 	    if (ListLength(ht->lists[i]) >= max) max = ListLength(ht->lists[i]);	
 	}
-	for (i=0; i<=max; i++) {
+	int *faster = calloc(max,sizeof(int));
+	for (j=0; j<ht->nslots; j++) {
+	    faster[ListLength(ht->lists[j])]++;
+	}
+	/*for (i=0; i<=max; i++) {
 	    chains =0;
 	    for ( j=0; j<ht->nslots; j++) {
 	    	if (ListLength(ht->lists[j]) == i) chains++;
 	    }
 	    printf("%8d %8d\n", i, chains);
-	}
+	}*/
+	printf("%8d %8d\n", i, chains);
+	free(faster);
 	// TODO .. rest of function to show length/freq pairs
 }
 
