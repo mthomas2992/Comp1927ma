@@ -21,7 +21,7 @@ unsigned int hash(Key k, int tableSize)
 {
 	unsigned int h = 0;
 	int a = 31415, b = 27183;
-	for (; *k != '\0'; k++) {
+	for (; *k != '\0'; k+=2) {
 		a = a*b % (tableSize-1);
 		h = (a*h + *k) % tableSize;
 	}

@@ -1,25 +1,5 @@
 Flat profile:
 
-Each sample counts as 0.01 seconds.
-  %   cumulative   self              self     total           
- time   seconds   seconds    calls   s/call   s/call  name    
- 29.68      2.09     2.09 10504154     0.00     0.00  ListSearch
- 28.47      4.10     2.01 10504154     0.00     0.00  hash
- 22.15      5.66     1.56  2097166     0.00     0.00  ListLength
-  8.52      6.26     0.60  1048573     0.00     0.00  dropList
-  6.39      6.71     0.45  5252075     0.00     0.00  HashTableInsert
-  1.56      6.82     0.11 36897911     0.00     0.00  cmp
-  0.99      6.89     0.07  5252079     0.00     0.00  HashTableSearch
-  0.64      6.94     0.05                             main
-  0.50      6.97     0.04  5252075     0.00     0.00  ListInsert
-  0.36      7.00     0.03        1     0.03     1.59  HashTableStats
-  0.28      7.02     0.02  5252076     0.00     0.00  ItemGet
-  0.14      7.03     0.01  5252075     0.00     0.00  dropItem
-  0.14      7.04     0.01  5252075     0.00     0.00  newItem
-  0.14      7.05     0.01        1     0.01     0.01  newHashTable
-  0.07      7.05     0.01                             showList
-  0.00      7.05     0.00  1048573     0.00     0.00  newList
-  0.00      7.05     0.00        1     0.00     0.61  dropHashTable
 
  %         the percentage of the total running time of the
 time       program used by this function.

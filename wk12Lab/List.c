@@ -14,6 +14,7 @@ typedef struct ListNode {
 typedef struct ListRep {
 	ListNode *first;  // ptr to first node
 	ListNode *last;   // ptr to last node
+	int num; //number of nodes in list
 } ListRep;
 
 // create new empty list
@@ -24,6 +25,7 @@ List newList()
 	assert(L != NULL);
 	L->first = NULL;
 	L->last = NULL;
+	L->num = 0;
 	return L;
 }
 
@@ -71,6 +73,7 @@ void ListInsert(List L, Item it)
 		L->last->next = new;
 		L->last = new;
 	}
+	L->num++;
 }
 
 // remove item(s)
@@ -114,11 +117,5 @@ Item *ListSearch(List L, Key k)
 // # items in list
 int ListLength(List L)
 {
-	int n = 0;
-	ListNode *curr = L->first; 
-	while (curr != NULL) {
-		n++;
-		curr = curr->next;
-	}
-	return n;
+	return L->num;
 }
