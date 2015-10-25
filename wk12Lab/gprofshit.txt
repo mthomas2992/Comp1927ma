@@ -1,0 +1,216 @@
+Flat profile:
+
+Each sample counts as 0.01 seconds.
+  %   cumulative   self              self     total           
+ time   seconds   seconds    calls   s/call   s/call  name    
+ 57.22      7.20     7.20 10504154     0.00     0.00  ListSearch
+ 16.00      9.21     2.01 10504154     0.00     0.00  hash
+ 10.58     10.54     1.33  2097171     0.00     0.00  ListLength
+  5.49     11.23     0.69  1048576     0.00     0.00  dropList
+  4.89     11.85     0.62 258728702     0.00     0.00  cmp
+  4.10     12.36     0.52  5252075     0.00     0.00  HashTableInsert
+  0.48     12.42     0.06  5252075     0.00     0.00  ListInsert
+  0.40     12.47     0.05  5252079     0.00     0.00  HashTableSearch
+  0.40     12.52     0.05                             main
+  0.24     12.55     0.03  5252076     0.00     0.00  ItemGet
+  0.16     12.57     0.02        1     0.02     1.35  HashTableStats
+  0.08     12.58     0.01        1     0.01     0.01  newHashTable
+  0.04     12.59     0.01  5252075     0.00     0.00  newItem
+  0.00     12.59     0.00  5252075     0.00     0.00  dropItem
+  0.00     12.59     0.00  1048576     0.00     0.00  newList
+  0.00     12.59     0.00        1     0.00     0.69  dropHashTable
+
+ %         the percentage of the total running time of the
+time       program used by this function.
+
+cumulative a running sum of the number of seconds accounted
+ seconds   for by this function and those listed above it.
+
+ self      the number of seconds accounted for by this
+seconds    function alone.  This is the major sort for this
+           listing.
+
+calls      the number of times this function was invoked, if
+           this function is profiled, else blank.
+ 
+ self      the average number of milliseconds spent in this
+ms/call    function per call, if this function is profiled,
+	   else blank.
+
+ total     the average number of milliseconds spent in this
+ms/call    function and its descendents per call, if this 
+	   function is profiled, else blank.
+
+name       the name of the function.  This is the minor sort
+           for this listing. The index shows the location of
+	   the function in the gprof listing. If the index is
+	   in parenthesis it shows where it would appear in
+	   the gprof listing if it were to be printed.
+
+		     Call graph (explanation follows)
+
+
+granularity: each sample hit covers 2 byte(s) for 0.08% of 12.59 seconds
+
+index % time    self  children    called     name
+                                                 <spontaneous>
+[1]    100.0    0.05   12.54                 main [1]
+                0.52    4.97 5252075/5252075     HashTableInsert [3]
+                0.05    4.91 5252079/5252079     HashTableSearch [4]
+                0.02    1.33       1/1           HashTableStats [6]
+                0.00    0.69       1/1           dropHashTable [9]
+                0.03    0.01 5252076/5252076     ItemGet [12]
+                0.01    0.00 5252076/258728702     cmp [10]
+                0.01    0.00       1/1           newHashTable [13]
+-----------------------------------------------
+                3.60    0.30 5252075/10504154     HashTableInsert [3]
+                3.60    0.30 5252079/10504154     HashTableSearch [4]
+[2]     62.0    7.20    0.60 10504154         ListSearch [2]
+                0.60    0.00 253476626/258728702     cmp [10]
+-----------------------------------------------
+                0.52    4.97 5252075/5252075     main [1]
+[3]     43.5    0.52    4.97 5252075         HashTableInsert [3]
+                3.60    0.30 5252075/10504154     ListSearch [2]
+                1.01    0.00 5252075/10504154     hash [5]
+                0.06    0.00 5252075/5252075     ListInsert [11]
+-----------------------------------------------
+                0.05    4.91 5252079/5252079     main [1]
+[4]     39.4    0.05    4.91 5252079         HashTableSearch [4]
+                3.60    0.30 5252079/10504154     ListSearch [2]
+                1.01    0.00 5252079/10504154     hash [5]
+-----------------------------------------------
+                1.01    0.00 5252075/10504154     HashTableInsert [3]
+                1.01    0.00 5252079/10504154     HashTableSearch [4]
+[5]     16.0    2.01    0.00 10504154         hash [5]
+-----------------------------------------------
+                0.02    1.33       1/1           main [1]
+[6]     10.7    0.02    1.33       1         HashTableStats [6]
+                1.33    0.00 2097171/2097171     ListLength [7]
+-----------------------------------------------
+                1.33    0.00 2097171/2097171     HashTableStats [6]
+[7]     10.6    1.33    0.00 2097171         ListLength [7]
+-----------------------------------------------
+                0.69    0.00 1048576/1048576     dropHashTable [9]
+[8]      5.5    0.69    0.00 1048576         dropList [8]
+                0.00    0.00 5252075/5252075     dropItem [15]
+-----------------------------------------------
+                0.00    0.69       1/1           main [1]
+[9]      5.5    0.00    0.69       1         dropHashTable [9]
+                0.69    0.00 1048576/1048576     dropList [8]
+-----------------------------------------------
+                0.01    0.00 5252076/258728702     main [1]
+                0.60    0.00 253476626/258728702     ListSearch [2]
+[10]     4.9    0.62    0.00 258728702         cmp [10]
+-----------------------------------------------
+                0.06    0.00 5252075/5252075     HashTableInsert [3]
+[11]     0.5    0.06    0.00 5252075         ListInsert [11]
+-----------------------------------------------
+                0.03    0.01 5252076/5252076     main [1]
+[12]     0.3    0.03    0.01 5252076         ItemGet [12]
+                0.01    0.00 5252075/5252075     newItem [14]
+-----------------------------------------------
+                0.01    0.00       1/1           main [1]
+[13]     0.1    0.01    0.00       1         newHashTable [13]
+                0.00    0.00 1048576/1048576     newList [16]
+-----------------------------------------------
+                0.01    0.00 5252075/5252075     ItemGet [12]
+[14]     0.0    0.01    0.00 5252075         newItem [14]
+-----------------------------------------------
+                0.00    0.00 5252075/5252075     dropList [8]
+[15]     0.0    0.00    0.00 5252075         dropItem [15]
+-----------------------------------------------
+                0.00    0.00 1048576/1048576     newHashTable [13]
+[16]     0.0    0.00    0.00 1048576         newList [16]
+-----------------------------------------------
+
+ This table describes the call tree of the program, and was sorted by
+ the total amount of time spent in each function and its children.
+
+ Each entry in this table consists of several lines.  The line with the
+ index number at the left hand margin lists the current function.
+ The lines above it list the functions that called this function,
+ and the lines below it list the functions this one called.
+ This line lists:
+     index	A unique number given to each element of the table.
+		Index numbers are sorted numerically.
+		The index number is printed next to every function name so
+		it is easier to look up where the function in the table.
+
+     % time	This is the percentage of the `total' time that was spent
+		in this function and its children.  Note that due to
+		different viewpoints, functions excluded by options, etc,
+		these numbers will NOT add up to 100%.
+
+     self	This is the total amount of time spent in this function.
+
+     children	This is the total amount of time propagated into this
+		function by its children.
+
+     called	This is the number of times the function was called.
+		If the function called itself recursively, the number
+		only includes non-recursive calls, and is followed by
+		a `+' and the number of recursive calls.
+
+     name	The name of the current function.  The index number is
+		printed after it.  If the function is a member of a
+		cycle, the cycle number is printed between the
+		function's name and the index number.
+
+
+ For the function's parents, the fields have the following meanings:
+
+     self	This is the amount of time that was propagated directly
+		from the function into this parent.
+
+     children	This is the amount of time that was propagated from
+		the function's children into this parent.
+
+     called	This is the number of times this parent called the
+		function `/' the total number of times the function
+		was called.  Recursive calls to the function are not
+		included in the number after the `/'.
+
+     name	This is the name of the parent.  The parent's index
+		number is printed after it.  If the parent is a
+		member of a cycle, the cycle number is printed between
+		the name and the index number.
+
+ If the parents of the function cannot be determined, the word
+ `<spontaneous>' is printed in the `name' field, and all the other
+ fields are blank.
+
+ For the function's children, the fields have the following meanings:
+
+     self	This is the amount of time that was propagated directly
+		from the child into the function.
+
+     children	This is the amount of time that was propagated from the
+		child's children to the function.
+
+     called	This is the number of times the function called
+		this child `/' the total number of times the child
+		was called.  Recursive calls by the child are not
+		listed in the number after the `/'.
+
+     name	This is the name of the child.  The child's index
+		number is printed after it.  If the child is a
+		member of a cycle, the cycle number is printed
+		between the name and the index number.
+
+ If there are any cycles (circles) in the call graph, there is an
+ entry for the cycle-as-a-whole.  This entry shows who called the
+ cycle (as parents) and the members of the cycle (as children.)
+ The `+' recursive calls entry shows the number of function calls that
+ were internal to the cycle, and the calls entry for each member shows,
+ for that member, how many times it was called from other members of
+ the cycle.
+
+
+Index by function name
+
+   [3] HashTableInsert         [2] ListSearch              [1] main
+   [4] HashTableSearch        [10] cmp                    [13] newHashTable
+   [6] HashTableStats          [9] dropHashTable          [14] newItem
+  [12] ItemGet                [15] dropItem               [16] newList
+  [11] ListInsert              [8] dropList
+   [7] ListLength              [5] hash

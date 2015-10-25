@@ -1,0 +1,239 @@
+Question a
+Reading words from stdin
+Hash Table Stats:
+Number of slots = 85711
+Number of items = 857144
+Chain length distribution
+  Length  #Chains
+       0        2
+       1       35
+       2      179
+       3      626
+       4     1649
+       5     3180
+       6     5433
+       7     7759
+       8     9526
+       9    10647
+      10    10985
+      11     9738
+      12     8124
+      13     6302
+      14     4514
+      15     2925
+      16     1820
+      17     1072
+      18      589
+      19      316
+      20      156
+      21       75
+      22       34
+      23       17
+      24        4
+      25        3
+      26        0
+      27        1
+Testing completed OK
+  As seen above, The maximum chain length for 857144 words
+  with a hash table size of 85711 is 27
+
+  The distribution appears to be approximately normal
+  Examining the distributions of sorting the same words into hash tables of size 100000, 214283, 400000, 400837, 857144, 857137, we find that those corresponding to 214283, 400837 and 857137 are more spread, i.e. have higher numbers at higher lengths than the others, and that the others typically show a higher density of low length chains, particularly chains of length - and 1 However, as the hash table size increases towards the number of items, these differences become less significant.
+  Below are results demonstrating this:
+
+Reading words from stdin
+Hash Table Stats:
+Number of slots = 100000
+Number of items = 857144
+Chain length distribution
+  Length  #Chains
+       0       46
+       1      381
+       2     1394
+       3     3385
+       4     5879
+       5     8635
+       6    10873
+       7    12052
+       8    11825
+       9    10574
+      10     9008
+      11     7128
+      12     5395
+      13     4122
+      14     2880
+      15     1961
+      16     1377
+      17      987
+      18      656
+      19      441
+      20      296
+      21      232
+      22      155
+      23      103
+      24       53
+      25       57
+      26       33
+      27       28
+      28       11
+      29       11
+      30       10
+      31        1
+      32        3
+      33        3
+      34        2
+      35        0
+      36        2
+      37        0
+      38        0
+      39        1
+Testing completed OK
+
+
+Reading words from stdin
+Hash Table Stats:
+Number of slots = 214283
+Number of items = 857144
+Chain length distribution
+  Length  #Chains
+       0     4009
+       1    15882
+       2    31261
+       3    41714
+       4    41667
+       5    33736
+       6    22244
+       7    12672
+       8     6444
+       9     2867
+      10     1180
+      11      424
+      12      136
+      13       30
+      14       14
+      15        3
+Testing completed OK
+
+
+Reading words from stdin
+Hash Table Stats:
+Number of slots = 400000
+Number of items = 857144
+Chain length distribution
+  Length  #Chains
+       0    53533
+       1   102179
+       2   102686
+       3    70765
+       4    39150
+       5    18431
+       6     7801
+       7     3309
+       8     1296
+       9      497
+      10      232
+      11       70
+      12       31
+      13       10
+      14        9
+      15        1
+Testing completed OK
+
+
+Reading words from stdin
+Hash Table Stats:
+Number of slots = 400837
+Number of items = 857144
+Chain length distribution
+  Length  #Chains
+       0    46997
+       1   100849
+       2   108595
+       3    76832
+       4    41324
+       5    17467
+       6     6268
+       7     1840
+       8      525
+       9      113
+      10       24
+      11        3
+Testing completed OK
+
+
+Reading words from stdin
+Hash Table Stats:
+Number of slots = 857144
+Number of items = 857144
+Chain length distribution
+  Length  #Chains
+       0   317732
+       1   313152
+       2   156280
+       3    52756
+       4    13663
+       5     2941
+       6      542
+       7       71
+       8        5
+       9        2
+Testing completed OK
+
+
+Reading words from stdin
+Hash Table Stats:
+Number of slots = 857137
+Number of items = 857144
+Chain length distribution
+  Length  #Chains
+       0   315778
+       1   314713
+       2   157613
+       3    52710
+       4    13133
+       5     2679
+       6      433
+       7       74
+       8        4
+Testing completed OK
+
+
+Question b
+  Yes, as seen above the prime numbers seem to result in chain distributions that resemble a normal distribution, and the max chain length for the primes, 15, 11 and 8 respectively, compared to 39, 15 and 9 respectively. Again however, this difference is less noticed for hash table slot sizes approaching the total number of items (i.e. the tests fr 857144 and 857137 hash table sizes.
+
+Question c
+ Using trial and error on prime numbers between 500000 and 600000, seeking a prime that contains chain lengths of length 9, we find that the prim 651029, obtained from a list of prime numbers, produces the following output:
+
+Reading words from stdin
+Hash Table Stats:
+Number of slots = 651029
+Number of items = 857144
+Chain length distribution
+  Length  #Chains
+       0   174539
+       1   229626
+       2   151375
+       3    66361
+       4    21847
+       5     5739
+       6     1245
+       7      252
+       8       37
+       9        8
+Testing completed OK
+
+
+  which uses more than 2/3rds of the slots, and has most chains of length 1 or 2, and has a max chain length of 9
+
+Quesion d
+  running words on places with a hash table size of 1048576 results in chains up to length 4479, yet with a hash table size of 1048573, results in chains of length 20. gprof profiles for 1048576 show most time spent (7.34 seconds) in ListSearch, with 2nd most time 1.87 seconds in hash. Comparing this with hash table size 1048573, we see time spent in hash tops the list with 2.34 seconds, followed by 2.02 seconds in ListSearch. From this, we conclude that the list table search function has very poor performance when the hash function is sub-optimal.
+
+  INCLUDE THE GPROF TABLES
+  
+Question e
+  After running ./mkwords 1000000 | ./words - N on a variety of prime numbers between 0 and 1000000, we condlucde the functions that are most costly in terms of time are by far, hash and ListSearch. Some gprof tables are shown below
+
+
+  INCLUDE THE GPROF TABLES
+  
+Question f

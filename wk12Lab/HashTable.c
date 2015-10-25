@@ -70,7 +70,7 @@ void HashTableStats(HashTable ht)
 	for ( i=0; i<ht->nslots; i++) {
 	    if (ListLength(ht->lists[i]) >= max) max = ListLength(ht->lists[i]);	
 	}
-	int *faster = calloc(max,sizeof(int));
+	int *faster = calloc(max+1,sizeof(int));
 	for (j=0; j<ht->nslots; j++) {
 	    faster[ListLength(ht->lists[j])]++;
 	}
